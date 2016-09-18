@@ -6,5 +6,5 @@
     DEFINE('PAGES','pages/');
     DEFINE('CSS','css/');
     DEFINE('INC','includes/');
-    
+    include (INC.'connect.php'); 
 ?>

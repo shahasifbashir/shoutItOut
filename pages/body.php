@@ -1,3 +1,8 @@
+<?php
+$query = "SELECT * FROM data";
+$shouts = mysqli_query($con,$query)
+
+?>
 </head>
 <body>
     <div id="container">
@@ -7,15 +12,17 @@
         <main>
             <div id="shouts">
                 <ul>
-                    <li class="shout"><span>10:20 PM</spam> - Asif: Hey How are you guys?</li>
-                    <li class="shout"><span>10:20 PM</spam> - Asif: Hey How are you guys?</li>
-                    <li class="shout"><span>10:20 PM</spam> - Asif: Hey How are you guys?</li>
-                    <li class="shout"><span>10:20 PM</spam> - Asif: Hey How are you guys?</li>
-                    <li class="shout"><span>10:20 PM</spam> - Asif: Hey How are you guys?</li>
+                    <?php while($row = mysqli_fetch_assoc($shouts)):?>
+                        <li class="shout"><span><?php echo $row['time']; ?></span> -<b> <?php echo $row['user']; ?></b>: <?php echo $row['message']; ?></li>
+                    <?php endwhile;?>
                 </ul>
             </div>
             <div id="input">
-            <form>
+                
+                <?php if(isset($_GET['error'])):?>
+                <div class="error"><?php echo $_GET['error'];?> </div>
+                <?php endif;?>
+            <form method="post" action="pages/process.php">
                 <input type="text" names="user" placeholder="Enter your name" required="required"/>
                 <input type="text" names="message" placeholder="Enter your message" required="required"/>
                 <br>
