@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT * FROM data";
+$query = "SELECT * FROM data ORDER BY id DESC";
 $shouts = mysqli_query($con,$query)
 
 ?>
@@ -23,8 +23,8 @@ $shouts = mysqli_query($con,$query)
                 <div class="error"><?php echo $_GET['error'];?> </div>
                 <?php endif;?>
             <form method="post" action="pages/process.php">
-                <input type="text" names="user" placeholder="Enter your name" required="required"/>
-                <input type="text" names="message" placeholder="Enter your message" required="required"/>
+                <input type="text" name="user" placeholder="Enter your name" required="required"/>
+                <input type="text" name="message" placeholder="Enter your message" required="required"/>
                 <br>
                 <input class="submit-btn" type="submit" name="submit" value="Shout It Loud"/>
             </form>    
